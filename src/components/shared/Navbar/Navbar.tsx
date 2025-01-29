@@ -19,10 +19,10 @@ const Navbar = () => {
             />
             <h1 className="text-2xl font-bold">SkillShare</h1>
           </div>
-          <div className="flex gap-5 font-bold">
-            <Link href={"/"}>Home</Link>
-            <Link href={"/skills"}>Skills</Link>
-            <Link href={"/contact"}>Contact</Link>
+          <div className="flex gap-5 font-semibold">
+            <Link className="hover:text-gray-800" href={"/"}>Home</Link>
+            <Link className="hover:text-gray-800" href={"/skills"}>Skills</Link>
+            <Link className="hover:text-gray-800" href={"/contact"}>Contact</Link>
           </div>
         </div>
 
