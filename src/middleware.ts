@@ -15,8 +15,6 @@ export async function middleware(request: NextRequest) {
   // Get token from cookies
   const token = request.cookies.get("token")?.value;
 
-  console.log("Token:", token);
-
   let user: { role?: string } | null = null;
 
 
@@ -27,8 +25,6 @@ export async function middleware(request: NextRequest) {
       console.error("Invalid token:", error);
     }
   }
-
-  console.log(user)
 
   // If user is not authenticated
   if (!user) {
