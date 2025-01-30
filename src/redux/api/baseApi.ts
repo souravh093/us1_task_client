@@ -20,6 +20,7 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithAuth: BaseQueryFn = async (args, api, extraOptions) => {
   const result = await baseQuery(args, api, extraOptions);
+  console.log(result);
   if (
     result.error &&
     result.error.data &&

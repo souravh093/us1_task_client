@@ -26,7 +26,7 @@ const Navbar = async () => {
             <Link className="hover:text-gray-800" href={"/"}>
               Home
             </Link>
-            <Link className="hover:text-gray-800" href={"/skills"}>
+            <Link className="hover:text-gray-800" href={"/all-skills"}>
               Skills
             </Link>
             <Link className="hover:text-gray-800" href={"/contact"}>
@@ -36,7 +36,9 @@ const Navbar = async () => {
         </div>
 
         <div className="flex gap-5 items-center">
-          <Button className="rounded-3xl">Try It Free Today</Button>
+          <Link href="/all-skills">
+            <Button className="rounded-3xl">Try It Free Today</Button>
+          </Link>
           <RootProfileDropdown data={userData} />
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import bannerImage from "@/assets/banner.png";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const Banner = () => {
   return (
@@ -15,9 +16,9 @@ const Banner = () => {
             Learn from experienced teachers and elevate your skills in a
             collaborative environment.
           </p>
-          <div>
+          <Link href="/all-skills">
             <Button className="rounded-3xl">Try It Free Today</Button>
-          </div>
+          </Link>
         </div>
         <div>
           <Image src={bannerImage} alt="banner" width={400} height={400} />

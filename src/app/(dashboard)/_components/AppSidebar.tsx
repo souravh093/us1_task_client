@@ -22,9 +22,13 @@ export async function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="flex items-center space-x-2 m-5">
-            <Image src={Logo} alt="logo" width={40} height={40} />
-            <h1 className="font-bold text-xl text-black uppercase">Skill Hunt</h1>
+          <SidebarGroupLabel className="p-2">
+            <Link className="flex items-center space-x-2" href="/">
+              <Image src={Logo} alt="logo" width={40} height={40} />
+              <h1 className="font-bold text-xl text-black uppercase">
+                Skill Hunt
+              </h1>
+            </Link>
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>

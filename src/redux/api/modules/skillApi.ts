@@ -24,6 +24,7 @@ const skillApi = baseApi.injectEndpoints({
         return {
           url: "/skills",
           method: "GET",
+          params: params,
         };
       },
       providesTags: ["Skill"],

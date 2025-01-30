@@ -1,0 +1,16 @@
+export const CATEGORIES = [
+  "PROGRAMMING",
+  "DESIGN",
+  "MARKETING",
+  "BUSINESS",
+  "MUSIC",
+  "PHOTOGRAPHY",
+  "VIDEOGRAPHY",
+  "WRITING",
+  "COOKING",
+  "LANGUAGE",
+  "FITNESS",
+  "OTHER",
+];
+
+export const LEVELS = ["BEGINNER", "INTERMEDIATE", "ADVANCED"];
