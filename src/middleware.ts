@@ -5,15 +5,15 @@ import { jwtDecode } from "jwt-decode";
 const AuthRoutes = ["/login", "/register"];
 
 const RoleBasedRoutes = {
-  USER: [/^\/$/, /^\/profile/, /^\/client/],
-  ADMIN: [/^\/$/, /^\/admin/, /^\/profile/],
+  USER: [/^\/$/, /^\/dashboard/],
+  ADMIN: [/^\/$/, /^\/dashboard/],
 };
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Get token from cookies
-  const token = request.cookies.get("token")?.value;
+  const token = request.cookies.get("accessToken")?.value;
 
   let user: { role?: string } | null = null;
 
@@ -51,10 +51,7 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     "/",
-    "/profile",
-    "/profile/:path*",
-    "/admin",
-    "/admin/:path*",
+    "/dashboard",
     "/login",
     "/register",
   ],

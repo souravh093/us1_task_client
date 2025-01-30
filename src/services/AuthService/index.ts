@@ -5,7 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import { cookies } from "next/headers";
 
 export const currentUser = async () => {
-  const accessToken = (await cookies()).get("token")?.value;
+  const accessToken = (await cookies()).get("accessToken")?.value;
 
   let decoded: CustomJwtPayload | null = null;
 
@@ -20,6 +20,7 @@ export const currentUser = async () => {
 
 
 export const logoutUser = async () => {
-  (await cookies()).delete("token");
+  (await cookies()).delete("accessToken");
   (await cookies()).delete("refreshToken");
+  
 };

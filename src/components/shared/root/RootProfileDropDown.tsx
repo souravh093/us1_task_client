@@ -18,7 +18,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const ProfileDropdown = ({ data }: { data: any }) => {
+const RootProfileDropdown = ({ data }: { data: any }) => {
+  console.log(data);
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -44,10 +45,6 @@ const ProfileDropdown = ({ data }: { data: any }) => {
             ) : (
               <div className="h-10 w-10 rounded-full bg-gray-200"></div>
             )}
-
-            <h3>{data?.email}</h3>
-
-            <ChevronDown />
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
@@ -76,7 +73,7 @@ const ProfileDropdown = ({ data }: { data: any }) => {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <Link href={`/dashboard/change-password`}>Change Password</Link>
+            <Link href={`/dashboard`}>Dashboard</Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
@@ -88,4 +85,4 @@ const ProfileDropdown = ({ data }: { data: any }) => {
   );
 };
 
-export default ProfileDropdown;
+export default RootProfileDropdown;

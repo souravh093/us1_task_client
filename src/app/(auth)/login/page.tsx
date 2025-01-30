@@ -49,7 +49,7 @@ const Login = () => {
     dispatch(setUser({ user, token: res.token.accessToken }));
 
     if (res.success) {
-      Cookies.set("token", res.token.accessToken, { expires: 365 });
+      Cookies.set("accessToken", res.token.accessToken, { expires: 365 });
       showToast("success", res.message);
       form.reset();
       if (redirect) {

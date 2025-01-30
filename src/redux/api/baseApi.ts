@@ -1,4 +1,9 @@
-import { BaseQueryFn, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { showToast } from "@/components/shared/Toast/CustomTost";
+import {
+  BaseQueryFn,
+  createApi,
+  fetchBaseQuery,
+} from "@reduxjs/toolkit/query/react";
 import Cookies from "js-cookie";
 
 const baseQuery = fetchBaseQuery({
@@ -15,7 +20,14 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithAuth: BaseQueryFn = async (args, api, extraOptions) => {
   const result = await baseQuery(args, api, extraOptions);
-  console.log(result);
+  if (
+    result.error &&
+    result.error.data &&
+    typeof result.error.data === "object" &&
+    "message" in result.error.data
+  ) {
+    showToast("error", result.error.data.message as string);
+  }
   if (result.error && result.error.status === 401) {
     // Try to refresh the token
     const refreshResult = await fetch("http://localhost:5000/api/v1/refresh", {
@@ -42,5 +54,6 @@ const baseQueryWithAuth: BaseQueryFn = async (args, api, extraOptions) => {
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithAuth,
+  tagTypes: ["Skill"],
   endpoints: () => ({}),
 });

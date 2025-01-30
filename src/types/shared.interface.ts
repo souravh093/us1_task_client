@@ -8,3 +8,8 @@ export interface CustomJwtPayload extends JwtPayload {
   premiumMember: boolean;
   role: string;
 }
+
+export interface QueryItem {
+  key: string;
+  value: string;
+}
