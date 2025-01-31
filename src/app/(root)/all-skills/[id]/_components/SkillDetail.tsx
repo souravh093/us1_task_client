@@ -5,16 +5,16 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock, User } from "lucide-react";
 import Image from "next/image";
-
 import { ISkill } from "@/types/skill.interface";
 import AvailabilitySchedule from "./AvailabilitySchedule";
+import RequestSession from "./RequestSession";
 
 export default function SkillDetail({ skill }: { skill: ISkill }) {
   return (
     <div className="container mx-auto py-8 min-h-screen pt-20">
       <div className="py-8 bg-secondary mb-8 px-5">
         <h1 className="text-3xl font-bold">
-            {skill.name} - {skill.category}
+          {skill.name} - {skill.category}
         </h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -41,17 +41,23 @@ export default function SkillDetail({ skill }: { skill: ISkill }) {
           </CardHeader>
           <CardContent>
             <p className="text-lg mb-4">{skill.description}</p>
-            <div className="flex items-center space-x-2 text-muted-foreground">
-              <Calendar className="h-4 w-4" />
-              <span>
-                Created: {new Date(skill.createdAt).toLocaleDateString()}
-              </span>
-            </div>
-            <div className="flex items-center space-x-2 text-muted-foreground mt-1">
-              <Clock className="h-4 w-4" />
-              <span>
-                Updated: {new Date(skill.updatedAt).toLocaleDateString()}
-              </span>
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="flex items-center space-x-2 text-muted-foreground">
+                  <Calendar className="h-4 w-4" />
+                  <span>
+                    Created: {new Date(skill.createdAt).toLocaleDateString()}
+                  </span>
+                </div>
+                <div className="flex items-center space-x-2 text-muted-foreground mt-1">
+                  <Clock className="h-4 w-4" />
+                  <span>
+                    Updated: {new Date(skill.updatedAt).toLocaleDateString()}
+                  </span>
+                </div>
+              </div>
+
+              <RequestSession teacherId={skill.user.id} skillId={skill.id} availability={skill.availability} />
             </div>
           </CardContent>
         </Card>

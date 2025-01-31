@@ -13,7 +13,7 @@ import { useAppDispatch } from "@/redux/hooks";
 import { logout } from "@/redux/slice/authSlice";
 import { logoutUser } from "@/services/AuthService";
 
-import { ChevronDown, User } from "lucide-react";
+import { User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

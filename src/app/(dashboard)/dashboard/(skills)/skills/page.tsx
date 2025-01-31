@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/table";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Pencil, Plus, Trash2 } from "lucide-react";
 import { skillTableHeader } from "@/constant/tableHeader/tableHeader";
 import { useGetSkillsQuery } from "@/redux/api/modules/skillApi";
 import Image from "next/image";
@@ -77,11 +77,20 @@ const Skills = () => {
                   </span>
                 </TableCell>
                 <TableCell className="flex items-center gap-5">
+                  <Link href={`/dashboard/requested-sessions/${skill.id}`} passHref>
+                    <Button>
+                      View Sessions Request ({skill.session.length})
+                    </Button>
+                  </Link>
                   <Link href={`/dashboard/skills/${skill.id}`}>
-                    <Button>Edit</Button>
+                    <Button>
+                      <Pencil />
+                    </Button>
                   </Link>
 
-                  <Button>Delete</Button>
+                  <Button className="bg-red-500 hover:bg-red-700">
+                    <Trash2 />
+                  </Button>
                 </TableCell>
               </TableRow>
             ))

@@ -1,4 +1,5 @@
 import { IAvailability } from "./availability.interface";
+import { ISession } from "./session.interface";
 import { IUser } from "./user.interface";
 
 export interface ISkill {
@@ -12,4 +13,5 @@ export interface ISkill {
   updatedAt: string;
   user: IUser;
   availability: IAvailability[];
+  session: ISession[];
 }
