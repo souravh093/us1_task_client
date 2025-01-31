@@ -16,7 +16,13 @@ import { Input } from "@/components/ui/input";
 import { showToast } from "../Toast/CustomTost";
 import { useUpdateSessionMutation } from "@/redux/api/modules/sessionApi";
 
-const FixMeetingModal = ({ sessionId }: { sessionId: string }) => {
+const FixMeetingModal = ({
+  sessionId,
+  meetingLink: link,
+}: {
+  sessionId: string;
+  meetingLink: string | undefined;
+}) => {
   const [open, setOpen] = useState(false);
   const [meetingLink, setMeetingLink] = useState("");
 
@@ -64,7 +70,7 @@ const FixMeetingModal = ({ sessionId }: { sessionId: string }) => {
               </Label>
               <Input
                 id="meetingLink"
-                value={meetingLink}
+                value={meetingLink || link ? link : ""}
                 onChange={(e) => setMeetingLink(e.target.value)}
                 className="col-span-3"
                 placeholder="https://meet.google.com/abc-xyz"

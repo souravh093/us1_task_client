@@ -17,10 +17,20 @@ import { useGetSkillsQuery } from "@/redux/api/modules/skillApi";
 import Image from "next/image";
 import { ISkill } from "@/types/skill.interface";
 import TableBodySkeleton from "@/components/shared/skeleton/TableSkeleton";
+import { useAppSelector } from "@/redux/hooks";
+import { selectCurrentUser } from "@/redux/slice/authSlice";
 
 const Skills = () => {
-  const { data: skills, isLoading } = useGetSkillsQuery(undefined);
-  console.log(skills);
+  const currentUserData = useAppSelector(selectCurrentUser);
+  const query = [
+    {
+      key: "filter",
+      value: JSON.stringify({
+        userId: currentUserData?.id,
+      }),
+    },
+  ];
+  const { data: skills, isLoading } = useGetSkillsQuery(query); 
   return (
     <div>
       <div className="flex justify-between items-center mb-8">
@@ -77,7 +87,10 @@ const Skills = () => {
                   </span>
                 </TableCell>
                 <TableCell className="flex items-center gap-5">
-                  <Link href={`/dashboard/requested-sessions/${skill.id}`} passHref>
+                  <Link
+                    href={`/dashboard/requested-sessions/${skill.id}`}
+                    passHref
+                  >
                     <Button>
                       View Sessions Request ({skill.session.length})
                     </Button>

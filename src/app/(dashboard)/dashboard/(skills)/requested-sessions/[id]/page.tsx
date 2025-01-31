@@ -1,4 +1,3 @@
-import { ISession } from "@/types/session.interface";
 import React from "react";
 import SessionsTable from "../_components/SessionTable/page";
 
@@ -18,7 +17,6 @@ const RequestedSessions = async ({ params }: { params: { id: string } }) => {
   );
   const sessions = await skillSessions.json();
 
-  console.dir(sessions, { depth: null });
   return (
     <div>
       <SessionsTable sessions={sessions?.data} />

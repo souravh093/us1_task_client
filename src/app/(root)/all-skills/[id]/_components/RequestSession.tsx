@@ -82,8 +82,6 @@ const RequestSession = ({
     }
   };
 
-  console.log(teacherId, currentUserData?.id);
-
   return (
     <div>
       <Form {...form}>

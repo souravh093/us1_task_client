@@ -8,8 +8,26 @@ const userApi = baseApi.injectEndpoints({
         method: "POST",
         body: payload,
       }),
+      invalidatesTags: ["User"],
+    }),
+
+    getUsers: builder.query({
+      query: () => "/users",
+      providesTags: ["User"],
+    }),
+
+    deleteUser: builder.mutation({
+      query: (id) => ({
+        url: `/users/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["User"],
     }),
   }),
 });
 
-export const { useCreateUserMutation } = userApi;
+export const {
+  useCreateUserMutation,
+  useGetUsersQuery,
+  useDeleteUserMutation,
+} = userApi;

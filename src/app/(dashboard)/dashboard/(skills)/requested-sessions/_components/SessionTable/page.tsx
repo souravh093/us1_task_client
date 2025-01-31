@@ -1,5 +1,4 @@
 import FixMeetingModal from "@/components/shared/modal/FixMeetingModal";
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -9,7 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ISession } from "@/types/session.interface";
-import { Presentation } from "lucide-react";
+import UpdateStatus from "../UpdateStatus";
 
 export default function SessionsTable({ sessions }: { sessions: ISession[] }) {
   return (
@@ -32,9 +31,14 @@ export default function SessionsTable({ sessions }: { sessions: ISession[] }) {
               <TableCell>{session.skill.name}</TableCell>
               <TableCell>{session.availability.dayOfWeek}</TableCell>
               <TableCell>{`${session.availability.startTime} - ${session.availability.endTime}`}</TableCell>
-              <TableCell>{session.status}</TableCell>
               <TableCell>
-                <FixMeetingModal sessionId={session.id} />
+                <UpdateStatus status={session.status} id={session.id} />
+              </TableCell>
+              <TableCell>
+                <FixMeetingModal
+                  meetingLink={session.meetingLink}
+                  sessionId={session.id}
+                />
               </TableCell>
             </TableRow>
           ))}
