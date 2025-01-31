@@ -1,4 +1,5 @@
 import { showToast } from "@/components/shared/Toast/CustomTost";
+import envConfig from "@/config/envConfig";
 import {
   BaseQueryFn,
   createApi,
@@ -7,7 +8,7 @@ import {
 import Cookies from "js-cookie";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api/v1",
+  baseUrl: envConfig.baseApi,
   prepareHeaders: async (headers) => {
     const accessToken = Cookies.get("accessToken");
     if (accessToken) {
@@ -31,7 +32,7 @@ const baseQueryWithAuth: BaseQueryFn = async (args, api, extraOptions) => {
   }
   if (result.error && result.error.status === 401) {
     // Try to refresh the token
-    const refreshResult = await fetch("http://localhost:5000/api/v1/refresh", {
+    const refreshResult = await fetch(`${envConfig.baseApi}/refresh`, {
       method: "POST",
       credentials: "include",
     });

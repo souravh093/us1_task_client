@@ -1,15 +1,22 @@
 import React from "react";
-import SessionsTable from "../_components/SessionTable/page";
+import envConfig from "@/config/envConfig";
+import SessionsTable from "../_components/SessionTable";
 
-const RequestedSessions = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+interface PageProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+const RequestedSessions = async ({ params }: PageProps) => {
+  const { id } = await params;
 
   const queryParams = new URLSearchParams();
 
   queryParams.append("filter", JSON.stringify({ skillId: id }));
 
   const skillSessions = await fetch(
-    `http://localhost:5000/api/v1/sessions?${queryParams}`,
+    `${envConfig.baseApi}/sessions?${queryParams}`,
     {
       method: "GET",
       cache: "no-store",

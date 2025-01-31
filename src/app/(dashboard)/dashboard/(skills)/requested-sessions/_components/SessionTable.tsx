@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import FixMeetingModal from "@/components/shared/modal/FixMeetingModal";
 import {
   Table,
@@ -7,10 +8,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ISession } from "@/types/session.interface";
-import UpdateStatus from "../UpdateStatus";
+import UpdateStatus from "./UpdateStatus";
 
-export default function SessionsTable({ sessions }: { sessions: ISession[] }) {
+
+export default function SessionsTable({ sessions }: { sessions: any[] }) {
   return (
     <>
       <Table>
@@ -27,7 +28,6 @@ export default function SessionsTable({ sessions }: { sessions: ISession[] }) {
         <TableBody>
           {sessions.map((session) => (
             <TableRow key={session.id}>
-              <TableCell>{session.requestor.name}</TableCell>
               <TableCell>{session.skill.name}</TableCell>
               <TableCell>{session.availability.dayOfWeek}</TableCell>
               <TableCell>{`${session.availability.startTime} - ${session.availability.endTime}`}</TableCell>

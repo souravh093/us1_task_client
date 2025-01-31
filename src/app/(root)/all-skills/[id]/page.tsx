@@ -1,10 +1,18 @@
 import React from "react";
 import SkillDetail from "./_components/SkillDetail";
+import envConfig from "@/config/envConfig";
 
-const SkillDetails = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+interface PageProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
 
-  const skill = await fetch(`http://localhost:5000/api/v1/skills/${id}`).then(
+
+const SkillDetails = async ({ params }: PageProps) => {
+  const { id } = await params;
+
+  const skill = await fetch(`${envConfig.baseApi}/skills/${id}`).then(
     (res) => res.json()
   );
 
