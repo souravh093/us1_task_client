@@ -48,9 +48,9 @@ const Login = () => {
 
     if (res.success) {
       Cookies.set("accessToken", res.token.accessToken, { expires: 365 });
-      showToast("success", res.message);
       form.reset();
-      router.replace("/");
+      router.push("/");
+      showToast("success", res.message);
     } else {
       showToast("error", res.message);
     }
