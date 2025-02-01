@@ -18,8 +18,8 @@ export const AdminNavItems = [
     icon: ChartColumnIncreasing,
   },
   {
-    title: "Review",
-    url: "/dashboard/reviews",
+    title: "All Sessions",
+    url: "/dashboard/all-sessions",
     icon: Star,
   },
 ];

@@ -56,6 +56,6 @@ const baseQueryWithAuth: BaseQueryFn = async (args, api, extraOptions) => {
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithAuth,
-  tagTypes: ["Skill", "Session", "User"],
+  tagTypes: ["Skill", "Session", "User", "Review"],
   endpoints: () => ({}),
 });

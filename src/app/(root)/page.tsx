@@ -4,6 +4,7 @@ import Unlock from './_components/Unlock'
 import UniqueSkill from './_components/UniqueSkill'
 import FAQSection from './_components/FAQSection'
 import SkillCategories from './_components/SkillCategories'
+import ReviewSection from './_components/ReviewSection'
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         <SkillCategories />
         <Unlock />
         <UniqueSkill />
+        <ReviewSection />
         <FAQSection />
     </div>
   )

@@ -11,6 +11,7 @@ export interface ISkill {
   description: string;
   createdAt: string;
   updatedAt: string;
+  requestCount: number;
   user: IUser;
   availability: IAvailability[];
   session: ISession[];

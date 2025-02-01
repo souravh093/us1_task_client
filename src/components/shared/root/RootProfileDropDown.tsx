@@ -40,7 +40,7 @@ const RootProfileDropdown = ({ data }: { data: any }) => {
                 alt="profile"
                 width={40}
                 height={40}
-                className="rounded-full bg-gray-200"
+                className="rounded-full bg-gray-200 h-10 w-10 object-cover"
               />
             ) : (
               <div className="h-10 w-10 rounded-full bg-gray-200"></div>

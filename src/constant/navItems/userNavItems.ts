@@ -1,4 +1,4 @@
-import { Brush, Mic, Gauge, History, Star } from "lucide-react";
+import { Brush, Mic, Gauge, Star } from "lucide-react";
 
 export const UserNavItems = [
   {
@@ -17,13 +17,8 @@ export const UserNavItems = [
     icon: Brush,
   },
   {
-    title: "Review",
+    title: "Give Session Reviews",
     url: "/dashboard/reviews",
     icon: Star,
-  },
-  {
-    title: "Session History",
-    url: "/dashboard/session-history",
-    icon: History,
   },
 ];
