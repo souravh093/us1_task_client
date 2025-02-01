@@ -51,6 +51,7 @@ const Login = () => {
       form.reset();
       router.push("/");
       showToast("success", res.message);
+      window.location.reload();
     } else {
       showToast("error", res.message);
     }
