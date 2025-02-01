@@ -22,16 +22,14 @@ import Link from "next/link";
 import { loginValidationSchema } from "@/validations/auth.validation";
 import { useLoginUserMutation } from "@/redux/api/modules/authApi";
 import { showToast } from "@/components/shared/Toast/CustomTost";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { verifyToken } from "@/utils/verifyToken";
 import { setUser, TUser } from "@/redux/slice/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
 
 const Login = () => {
   const [loginUser, { isLoading }] = useLoginUserMutation();
-  const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
-  const redirect = searchParams.get("redirect");
   const router = useRouter();
   const form = useForm({
     resolver: zodResolver(loginValidationSchema),
@@ -52,12 +50,7 @@ const Login = () => {
       Cookies.set("accessToken", res.token.accessToken, { expires: 365 });
       showToast("success", res.message);
       form.reset();
-      if (redirect) {
-        const decodedRedirect = decodeURIComponent(redirect); // Decode the redirect URL
-        router.push(decodedRedirect);  // Use the decoded URL
-      } else {
-        router.push("/");
-      }
+      router.replace("/");
     } else {
       showToast("error", res.message);
     }
@@ -95,10 +88,7 @@ const Login = () => {
               </div>
 
               <div className="flex justify-center gap-4 mt-4">
-                <Button
-                  type="button"
-                  onClick={() => handleAutoFill("user")}
-                >
+                <Button type="button" onClick={() => handleAutoFill("user")}>
                   Autofill User
                 </Button>
                 <Button

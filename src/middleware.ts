@@ -31,7 +31,7 @@ export async function middleware(request: NextRequest) {
     if (AuthRoutes.includes(pathname)) {
       return NextResponse.next(); // Allow login/register pages
     } else {
-      return NextResponse.redirect(new URL(`/login?redirect=${pathname}`, request.url));
+      return NextResponse.redirect(new URL(`/login`, request.url));
     }
   }
 
