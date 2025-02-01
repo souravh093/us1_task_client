@@ -1,48 +1,47 @@
 import Image from "next/image";
-import React from "react";
 import logo from "@/assets/logo.png";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import RootProfileDropdown from "../root/RootProfileDropDown";
 import { currentUser } from "@/services/AuthService";
+import MobileMenu from "./MobileMenu";
 
 const Navbar = async () => {
   const userData = await currentUser();
   return (
-    <div className="bg-transparent py-4 absolute w-full z-10">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center gap-10">
+    <nav className="bg-transparent py-4 absolute w-full z-10 md:bg-transparent bg-white">
+      <div className="container mx-auto flex justify-between items-center px-4">
+        <div className="flex items-center gap-4 md:gap-10">
           <div className="flex gap-2 items-center">
             <Image
-              className="w-10 h-10"
+              className="w-8 h-8 md:w-10 md:h-10"
               width={400}
               height={400}
-              src={logo}
+              src={logo || "/placeholder.svg"}
               alt="logo"
             />
-            <h1 className="text-2xl font-bold">SkillShare</h1>
+            <h1 className="text-xl md:text-2xl font-bold">SkillSync</h1>
           </div>
-          <div className="flex gap-5 font-semibold">
-            <Link className="hover:text-gray-800" href={"/"}>
+          <div className="hidden md:flex gap-5 font-semibold">
+            <Link className="hover:text-gray-600" href={"/"}>
               Home
             </Link>
-            <Link className="hover:text-gray-800" href={"/all-skills"}>
+            <Link className="hover:text-gray-600" href={"/all-skills"}>
               Skills
-            </Link>
-            <Link className="hover:text-gray-800" href={"/contact"}>
-              Contact
             </Link>
           </div>
         </div>
 
-        <div className="flex gap-5 items-center">
+        <div className="hidden md:flex gap-5 items-center">
           <Link href="/all-skills">
             <Button className="rounded-3xl">Try It Free Today</Button>
           </Link>
           <RootProfileDropdown data={userData} />
         </div>
+
+        <MobileMenu userData={userData} />
       </div>
-    </div>
+    </nav>
   );
 };
 

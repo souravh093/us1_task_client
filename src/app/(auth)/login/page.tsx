@@ -62,6 +62,18 @@ const Login = () => {
     }
   };
 
+  // Default credentials
+  const defaultCredentials = {
+    user: { email: "normaluser@gmail.com", password: "password" },
+    admin: { email: "souravh093@gmail.com", password: "admin@123" },
+  };
+
+  const handleAutoFill = (role: "user" | "admin") => {
+    const credentials = defaultCredentials[role];
+    form.setValue("email", credentials.email);
+    form.setValue("password", credentials.password);
+  };
+
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <Card className="w-full max-w-md p-8 shadow-lg rounded-lg bg-white">
@@ -79,6 +91,22 @@ const Login = () => {
                 <h1 className="text-2xl font-semibold text-gray-700">
                   Login to your account
                 </h1>
+              </div>
+
+              <div className="flex justify-center gap-4 mt-4">
+                <Button
+                  type="button"
+                  onClick={() => handleAutoFill("user")}
+                >
+                  Autofill User
+                </Button>
+                <Button
+                  type="button"
+                  onClick={() => handleAutoFill("admin")}
+                  className="bg-blue-500"
+                >
+                  Autofill Admin
+                </Button>
               </div>
               <FormField
                 control={form.control}

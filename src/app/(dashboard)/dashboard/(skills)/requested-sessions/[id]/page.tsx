@@ -1,6 +1,5 @@
 import React from "react";
-import envConfig from "@/config/envConfig";
-import SessionsTable from "../_components/SessionTable";
+import RequestedSessions from "../_components/RequestedSessions";
 
 interface PageProps {
   params: Promise<{
@@ -8,27 +7,14 @@ interface PageProps {
   }>;
 }
 
-const RequestedSessions = async ({ params }: PageProps) => {
+const page = async ({ params }: PageProps) => {
   const { id } = await params;
-
-  const queryParams = new URLSearchParams();
-
-  queryParams.append("filter", JSON.stringify({ skillId: id }));
-
-  const skillSessions = await fetch(
-    `${envConfig.baseApi}/sessions?${queryParams}`,
-    {
-      method: "GET",
-      cache: "no-store",
-    }
-  );
-  const sessions = await skillSessions.json();
 
   return (
     <div>
-      <SessionsTable sessions={sessions?.data} />
+      <RequestedSessions id={id} />
     </div>
   );
 };
 
-export default RequestedSessions;
+export default page;

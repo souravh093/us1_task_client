@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/table";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Pencil, Plus, Trash2 } from "lucide-react";
+import { Pencil, Plus } from "lucide-react";
 import { skillTableHeader } from "@/constant/tableHeader/tableHeader";
 import { useGetSkillsQuery } from "@/redux/api/modules/skillApi";
 import Image from "next/image";
@@ -19,6 +19,7 @@ import { ISkill } from "@/types/skill.interface";
 import TableBodySkeleton from "@/components/shared/skeleton/TableSkeleton";
 import { useAppSelector } from "@/redux/hooks";
 import { selectCurrentUser } from "@/redux/slice/authSlice";
+import { DeleteSkill } from "@/components/shared/modal/DeleteSkill";
 
 const Skills = () => {
   const currentUserData = useAppSelector(selectCurrentUser);
@@ -30,7 +31,7 @@ const Skills = () => {
       }),
     },
   ];
-  const { data: skills, isLoading } = useGetSkillsQuery(query); 
+  const { data: skills, isLoading } = useGetSkillsQuery(query);
   return (
     <div>
       <div className="flex justify-between items-center mb-8">
@@ -101,9 +102,7 @@ const Skills = () => {
                     </Button>
                   </Link>
 
-                  <Button className="bg-red-500 hover:bg-red-700">
-                    <Trash2 />
-                  </Button>
+                  <DeleteSkill id={skill.id} />
                 </TableCell>
               </TableRow>
             ))

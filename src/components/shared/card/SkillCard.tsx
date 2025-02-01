@@ -8,7 +8,7 @@ import React from "react";
 
 const SkillCard = ({ skill }: { skill: ISkill }) => {
   return (
-    <Card key={skill.id} className="overflow-hidden">
+    <Card key={skill.id} className="overflow-hidden hover:shadow-md transition-shadow">
       <Image
         src={skill.image || "/placeholder.svg"}
         alt={skill.name}
@@ -29,7 +29,7 @@ const SkillCard = ({ skill }: { skill: ISkill }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Avatar>
-              <AvatarImage src={skill.user.profilePhoto} alt={skill.name} />
+              <AvatarImage src={skill.user.profilePhoto} alt={skill.user.name} />
               <AvatarFallback>{skill.user.name.charAt(0)}</AvatarFallback>
             </Avatar>
             <span className="text-sm font-medium">{skill.user.name}</span>

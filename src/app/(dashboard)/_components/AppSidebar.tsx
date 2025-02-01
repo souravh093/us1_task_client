@@ -26,7 +26,7 @@ export async function AppSidebar() {
             <Link className="flex items-center space-x-2" href="/">
               <Image src={Logo} alt="logo" width={40} height={40} />
               <h1 className="font-bold text-xl text-black uppercase">
-                Skill Hunt
+                SkillSync
               </h1>
             </Link>
           </SidebarGroupLabel>

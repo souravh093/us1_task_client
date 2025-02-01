@@ -4,8 +4,8 @@ import React from "react";
 
 const Unlock = () => {
   return (
-    <div className="container mx-auto bg-primary my-20 py-20 px-32 leading-tight rounded-xl flex flex-col gap-5 items-center text-center">
-      <h1 className="text-5xl text-white font-bold">
+    <div className="container mx-auto bg-primary my-20 py-20 px-10 xl:px-32 leading-tight rounded-xl flex flex-col gap-5 items-center text-center">
+      <h1 className="text-2xl  xl:text-5xl  text-white font-bold">
         Unlock Your Potential with Peer-to-Peer Skills Sharing!
       </h1>
       <p className="text-gray-100">
